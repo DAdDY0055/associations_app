@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  template: template0
+
+development:
+  <<: *default
+  database: associations_app_development
+
+test:
+  <<: *default
+  database: associations_app_test
+
+production:
+  <<: *default
+  database: associations_app_production
+  username: associations_app
+  password: <%= ENV['ASSOCIATIONS_APP_DATABASE_PASSWORD'] %>
